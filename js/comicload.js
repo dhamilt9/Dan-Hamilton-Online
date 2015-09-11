@@ -4,7 +4,8 @@ var url = "/images/comics/comics.txt";
 xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
         var myArr = JSON.parse(xmlhttp.responseText);
-		if (document.cookie=="4"|| document.cookie=="5"){
+		
+		if (document.cookie=="4; 1"|| document.cookie=="5; 1"){
 			document.getElementById("hitbox").style.display="block";
 		}
         getComicName(myArr);
@@ -96,7 +97,8 @@ function navclick(){
 		document.cookie="1";
 	}
 	else{
-		document.cookie=parseInt(document.cookie)+1;
+		var setme=(parseInt(document.cookie)+1);
+		document.cookie=setme;
 	}
 }
 

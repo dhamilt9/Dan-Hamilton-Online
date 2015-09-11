@@ -3,10 +3,13 @@ var justclicked = 0
 
 var images = new Array();
 
-var softsoap = {
-	images: ["/images/softsoap1.png","/images/softsoap2.png","/images/softsoap3.png","/images/softsoap4.png","/images/softsoap5.png"],
-	index: 0
-};
+var videos = document.getElementsByTagName('video');
+
+function pauseVideos(){
+	for(var i = 0; i < videos.length; i++){
+		videos[i].pause();
+	}
+}
 
 
 $.fn.exists = function () {
@@ -69,6 +72,33 @@ function prevImg(galID){
 };
 $(".galleryimg").hover(function(){
 	$(this).animate({ height: "505px" }, 100);
+	$(this).parent().next().children("#softPrev").css( "color", "#9F111B" );
 },function(){
 	$(this).animate({ height: "498px" }, 100);
+	$(this).parent().next().children("#softPrev").removeAttr('style');
 });
+
+// OLD METHOD OF IMAGE CHANGING
+
+/* function nextImg(galID){
+	var imagelist=eval(galID);
+	imagelist.index=imagelist.index+1;
+	if (imagelist.index==imagelist.images.length){
+		imagelist.index=0
+	}
+	var imgsrc = imagelist.images[imagelist.index];
+	$('#'+galID).attr('src', imgsrc);
+	$('#'+galID).parent().attr('href', imgsrc);
+};
+
+
+function prevImg(galID){
+	var imagelist=eval(galID);
+	imagelist.index=imagelist.index-1;
+	if (imagelist.index<0){
+		imagelist.index=imagelist.images.length-1;
+	}
+	var imgsrc = imagelist.images[imagelist.index];
+	$('#'+galID).attr('src', imgsrc);
+	$('#'+galID).parent().attr('href', imgsrc);
+} */
