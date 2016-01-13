@@ -302,18 +302,13 @@ headr1{
 }
 #comic{
 	width:1200px;
-	height:400px;
 	max-width:100%;
 	border: 1px solid black;
 	background-color:white;
 }
 
 #controlbar{
-	margin-top:5px;
-	width:900px;
-	height:35px;
-	margin-left:auto;
-	margin-right:auto;
+	width:100%;
 }
 
 headr2{
@@ -322,15 +317,11 @@ headr2{
 
 .buttonicon{
 	height:35px;
-	width:auto;
+	width:25%;
 	float:left;
-	top:0;
-	bottom:0;
+	text-align:center;
 	font-size:30px;
 	letter-spacing:-12px;
-	margin-left:10.5%;
-	margin-right:10%;
-	padding-right:12px;
 	color:black;
 }
 
@@ -356,7 +347,7 @@ headr2{
 
 
 .glyphicon{
-	float:left;
+	display:inline-block;
 	top:0;
 	bottom:0;
 }
