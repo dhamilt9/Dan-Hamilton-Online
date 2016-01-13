@@ -4,10 +4,7 @@ var url = "/images/comics/comics.txt";
 xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
         var myArr = JSON.parse(xmlhttp.responseText);
-		
-		if (document.cookie=="4; 1"|| document.cookie=="5; 1"){
-			document.getElementById("hitbox").style.display="block";
-		}
+	console.log(document.cookie);
         getComicName(myArr);
     }
 }
@@ -40,6 +37,7 @@ function displayRecent(arr){
 	for(i=0; i < arr.length; i++) {
 		if(arr[i].number==comicNumber){
 			document.getElementById("comic").src = "/images/comics/"+arr[i].file;
+			document.getElementById("comic").title = arr[i].alt;
 		}
 	}
 	for(i=0; i < arr.length; i++) {
@@ -61,6 +59,7 @@ function displayComic(name, arr){
 		name2=arr[i].file.split(".")[0];
 		if (name==name2){
 			comicTitle=arr[i].name;
+			comicAlt=arr[i].alt;
 			comicNumber=arr[i].number;
 			if (comicNumber==arr.length){
 				document.getElementById("nextb").style.pointerEvents = "none";
@@ -69,6 +68,7 @@ function displayComic(name, arr){
 				document.getElementById("currentb").style.color = "grey";
 			}
 			comicName=name;
+			document.getElementById("comic").title = comicAlt;
 			document.getElementById("comic").src = "/images/comics/"+arr[i].file;
 		}
 	}
@@ -94,11 +94,18 @@ function displayComic(name, arr){
 
 function navclick(){
 	if(document.cookie=="" || document.cookie=="NaN"){
-		document.cookie="1";
+		document.cookie="value=1;";
 	}
 	else{
-		var setme=(parseInt(document.cookie)+1);
-		document.cookie=setme;
+		var name="value=";
+		var ca = document.cookie.split(';');
+		for(var i=0; i<ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0)==' ') c = c.substring(1);
+			if (c.indexOf(name) == 0){
+			       	console.log(c.substring(name.length,c.length));
+			}
+		}			
 	}
 }
 
